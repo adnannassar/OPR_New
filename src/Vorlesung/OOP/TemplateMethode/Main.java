@@ -1,4 +1,4 @@
-package Vorlesung.OOP.AbstractClass;
+package Vorlesung.OOP.TemplateMethode;
 
 public class Main {
     public static void main(String[] args) {
@@ -15,5 +15,13 @@ public class Main {
         formVerwaltung.addForm(circle);
 
         formVerwaltung.printFormen();
+
+
+        square.printFormFläche();
+        rectangle.printFormFläche();
+        triangle.printFormFläche();
+        circle.printFormFläche();
+
+
     }
 }
