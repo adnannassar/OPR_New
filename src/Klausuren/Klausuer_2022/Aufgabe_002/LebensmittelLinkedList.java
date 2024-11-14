@@ -1,6 +1,7 @@
 package Klausuren.Klausuer_2022.Aufgabe_002;
 
 
+import java.util.Iterator;
 import java.util.LinkedList;
 
 public abstract class LebensmittelLinkedList {
@@ -12,19 +13,22 @@ public abstract class LebensmittelLinkedList {
     public final String zutatentext() {
         LinkedList<Zutat> zutaten = getZutaten();
         if (zutaten != null) {
-            String erg = "";
+            StringBuilder erg = new StringBuilder();
             if (zutaten.size() == 1) {
-                erg += "Zutat: " + zutaten.get(0).getName();
+                erg.append("Zutat: ").append(zutaten.get(0).getName());
             } else {
-                erg += "Zutaten: ";
-                for (int i = 0; i < zutaten.size(); i++) {
-                    erg += zutaten.get(i).getName();
+                erg.append("Zutaten: ");
+                int i = 0;
+
+                for (Zutat zutat : zutaten) {
+                    erg.append(zutat.getName());
                     if (i < zutaten.size() - 1) {
-                        erg += ", ";
+                        erg.append(", ");
                     }
+                    i++;
                 }
             }
-            return erg;
+            return erg.toString();
         } else {
             return "Keine Zutaten!";
         }
@@ -34,8 +38,9 @@ public abstract class LebensmittelLinkedList {
     public final boolean istVegan() {
         LinkedList<Zutat> zutaten = getZutaten();
         if (zutaten != null) {
-            for (int i = 0; i < zutaten.size(); i++) {
-                if (!zutaten.get(i).isVegan()) {
+            Iterator<Zutat> it = zutaten.iterator();
+            while (it.hasNext()) {
+                if (!it.next().isVegan()) {
                     return false;
                 }
             }
