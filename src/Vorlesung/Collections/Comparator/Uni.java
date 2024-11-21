@@ -1,37 +1,34 @@
 package Vorlesung.Collections.Comparator;
 
-import java.util.Comparator;
-import java.util.LinkedList;
+import java.util.*;
 
 public class Uni {
 
     public static void main(String[] args) {
-        LinkedList<Student> students = new LinkedList<>();
-        students.add(new Student("Belal", 23));
+
+        Set<Student> students = new TreeSet<>(); // no double elements, sorted
+        students.add(new Student("Belal", 20));
+        students.add(new Student("Carlos", 24));
         students.add(new Student("Carlos", 24));
         students.add(new Student("Aya", 22));
 
-        System.out.println("Before sorting");
+        // System.out.println("Before sorting");
         System.out.println(students);
 
-        AgeComparator ageComparator = new AgeComparator();
-        students.sort(ageComparator);
-
-        System.out.println("After sorting");
-        System.out.println(students);
+        NameComparator ageComparator = new NameComparator();
+        // students.sort();
+        //  Collections.sort(students);
+        // students.sort(ageComparator);
+        //  Collections.sort(students, ageComparator);
+        //  System.out.println("After sorting");
+        // System.out.println(students);
 
     }
 
-    static class AgeComparator implements Comparator<Student> {
+    static class NameComparator implements Comparator<Student> {
         @Override
         public int compare(Student s1, Student s2) {
-            if (s1.getAge() > s2.getAge()) {
-                return -1;
-            } else if (s1.getAge() < s2.getAge()) {
-                return 1;
-            } else {
-                return 0;
-            }
+            return s1.getName().compareTo(s2.getName());
         }
     }
 }
