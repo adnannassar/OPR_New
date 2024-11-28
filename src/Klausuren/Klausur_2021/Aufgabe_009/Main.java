@@ -36,7 +36,6 @@ public class Main {
         flugportal.addFlug(new Flug("Hamburg", "Düsseldorf", 190.0, false, "141", "Lufthansa"));
 
 
-
         //TODO
         // Alle Flüge müsse nach preis aufsteigend sortiert werden
 
