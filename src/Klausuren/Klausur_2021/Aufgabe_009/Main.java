@@ -10,7 +10,7 @@ public class Main {
 
         Wunschziel wunschziel = new Wunschziel(start, ziel, true);
 
-        //TODO
+
         // PriseFilter priseFilter = new PriseFilter(200.0, 300.0);
         // PriseAndDWünschziel priseAndDWünschziel = new PriseAndDWünschziel(200.0, 300.0, start, ziel);
 

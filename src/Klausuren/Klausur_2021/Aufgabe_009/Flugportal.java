@@ -22,7 +22,7 @@ public class Flugportal {
     public List<Flug> sucheDirektfluege(String start, String ziel) {
         List<Flug> verbindungen = new ArrayList<>();
         for (Flug flug : flüge) {
-            if (protokollierer.filter(start, ziel, flug.IstDirektflug)) {
+            if (protokollierer.filter(flug.start, flug.ziel, flug.IstDirektflug)) {
                 verbindungen.add(flug);
             }
         }
