@@ -23,21 +23,20 @@ public class Aufgabe_006 {
 
     }
 
-
+    // use can use the remove method of the set as a trick to check if all bytes are found
     public static boolean enthaelt(InputStream is, Set<Byte> set) throws IOException {
-
-        BufferedReader br = new BufferedReader(new InputStreamReader(is));
-        String result = br.readLine();
-        Byte[] bytes = new Byte[result.length()];
-        for (int i = 0; i < result.length(); i++) {
-            bytes[i] = (byte) result.charAt(i);
-        }
-
-        for (int j = 0; j < bytes.length; j++) {
-            if (bytes[j] != null && !set.contains(bytes[j])) {
-                return false;
+        // Read the input stream byte by byte
+        int currentByte;
+        while ((currentByte = is.read()) != -1) {
+            // Remove the current byte from the set if it exists
+            set.remove((byte) currentByte);
+            // If the set is empty, all required bytes have been found
+            if (set.isEmpty()) {
+                return true;
             }
         }
-        return true;
+        // If the loop ends and the set is not empty, not all bytes were found
+        return false;
     }
 }
+
